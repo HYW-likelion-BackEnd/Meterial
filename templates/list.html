@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+리스트 이름 작성
+{% endblock %}
+
+{% block content %}
+    <div class="btn-group">
+        <a href="{% url '추가할 리스트 url' %}" class="btnbtn-info">Add 리스트 이름</a>
+    </div>
+    <p></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">URL</th>
+                <th scope="col">Modify</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for 리스트 이름 in object_list %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a href="{% url '상세 url' 리스트 이름.id %}">{{리스트 이름.name}}</a></td>
+                <td><a href="{{리스트 이름.url}}" target="_blank">{{리스트 이름.url}}</a></td>
+                <td><a href="{% url '변경 url' 리스트 이름.id %}" class="btn btn-success btn-sm">Modify</a></td>
+                <td><a href="{% url '삭제 url' 리스트 이름.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
